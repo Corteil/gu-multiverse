@@ -32,7 +32,7 @@ WS2812 led_strip[3] = {
     WS2812(NUM_LEDS, pio0, 1, 20, WS2812::DEFAULT_SERIAL_FREQ, false, WS2812::COLOR_ORDER::GRB),
     WS2812(NUM_LEDS, pio0, 2, 21, WS2812::DEFAULT_SERIAL_FREQ, false, WS2812::COLOR_ORDER::GRB)
 };
-
+*/
 int unicorn_pixel_address[64] = {7 , 6 , 5 , 4 , 3 , 2 , 1 , 0,
                                 8 , 9 , 10, 11, 12, 13, 14, 15,
                                 23, 22, 21, 20, 19, 18, 17, 16,
@@ -41,7 +41,7 @@ int unicorn_pixel_address[64] = {7 , 6 , 5 , 4 , 3 , 2 , 1 , 0,
                                 40, 41, 42, 43, 44, 45, 46, 47,
                                 55, 54, 53, 52, 51, 50, 49, 48,
                                 56, 57, 58, 59, 60, 61, 62, 63};
-*/
+/*
 int unicorn_pixel_address[64] = {0, 15, 16, 31, 32, 47, 48, 63,
                                 1, 14, 17, 30, 33, 46, 49, 62,
                                 2, 13, 18, 29, 34, 45, 50, 61,
@@ -50,7 +50,7 @@ int unicorn_pixel_address[64] = {0, 15, 16, 31, 32, 47, 48, 63,
                                 5, 10, 21, 26, 37, 42, 53, 58,
                                 6, 9, 22, 25, 38, 41, 54, 57,
                                 7, 8, 23, 24, 39, 40, 55, 56};
-
+*/
 
 namespace display {
     uint8_t buffer[BUFFER_SIZE];
@@ -116,9 +116,9 @@ namespace display {
                     int strip_index = unicorn_y * 8 + unicorn_x; // Calculate the index in the strip
                     
                     
-                    uint8_t blue = buffer[buffer_index] * 0.5; // Scale down the blue value
-                    uint8_t green = buffer[buffer_index + 1] * 0.5; // Scale down the green value
-                    uint8_t red = buffer[buffer_index + 2] * 0.5; // Scale down the red value
+                    uint8_t blue = buffer[buffer_index] * 0.4; // Scale down the blue value
+                    uint8_t green = buffer[buffer_index + 1] * 0.4; // Scale down the green value
+                    uint8_t red = buffer[buffer_index + 2] * 0.4; // Scale down the red value
                     
                     led_strip[hat_x_offset].set_rgb(unicorn_pixel_address[strip_index], red, green, blue);
                     
@@ -128,8 +128,8 @@ namespace display {
   //cout << "-------------------\n";
         }
     }
-*/
 
+*/
         void update() {
         // display update
         for (int y=0; y < HEIGHT; y++) {
@@ -144,9 +144,9 @@ namespace display {
                     int strip_index = unicorn_x * 8 + unicorn_y; // Calculate the index in the strip
                     
                     
-                    uint8_t blue = buffer[buffer_index] * 0.5; // Scale down the blue value
-                    uint8_t green = buffer[buffer_index + 1] * 0.5; // Scale down the green value
-                    uint8_t red = buffer[buffer_index + 2] * 0.5; // Scale down the red value
+                    uint8_t blue = buffer[buffer_index] * 0.4; // Scale down the blue value
+                    uint8_t green = buffer[buffer_index + 1] * 0.4; // Scale down the green value
+                    uint8_t red = buffer[buffer_index + 2] * 0.4; // Scale down the red value
                     
                     led_strip[hat_x_offset].set_rgb(unicorn_pixel_address[strip_index], red, green, blue);
                     
@@ -156,6 +156,7 @@ namespace display {
   //cout << "-------------------\n";
         }
     }
+
 
 
     void play_note(uint8_t channel, uint16_t freq, uint8_t waveform, uint16_t a, uint16_t d, uint16_t s, uint16_t r, uint8_t phase) {
