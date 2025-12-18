@@ -8,7 +8,8 @@ using namespace pimoroni;
 // Set how many LEDs you have
 const uint NUM_LEDS = 4096;
 
-Hub75 hub75(64, 64, nullptr, PANEL_FM6126A, false);
+//Hub75 hub75(64, 64, nullptr, PANEL_FM6126A, false);
+Hub75 hub75(64, 64, nullptr, PANEL_GENERIC, false);
 
 PicoGraphics_PenRGB888 graphics(hub75.width, hub75.height, nullptr);
 
@@ -99,20 +100,7 @@ namespace display {
 */
         void update() {
         // display update
-        for (int y=0; y < HEIGHT; y++) {
-                for (int x=0; x < WIDTH; x++) {
-                	
-                    int buffer_index = (x + y * WIDTH) * 4; // Calculate the index in the buffer
-                    
-                    uint8_t blue = buffer[buffer_index] * 0.4; // Scale down the blue value
-                    uint8_t green = buffer[buffer_index + 1] * 0.4; // Scale down the green value
-                    uint8_t red = buffer[buffer_index + 2] * 0.4; // Scale down the red value
-                    graphics.set_pen(red, green, blue);
-                    graphics.set_pixel(Point(x, y));
-                    
-                };
-        }
-        // update screen
+        
         hub75.update(&graphics);
     }
 
