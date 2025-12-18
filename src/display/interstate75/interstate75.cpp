@@ -111,9 +111,9 @@ namespace display {
                     graphics.set_pixel(Point(x, y));
                     
                 };
+        }
         // update screen
         hub75.update(&graphics);
-        }
     }
 
 

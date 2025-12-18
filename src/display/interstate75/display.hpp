@@ -3,7 +3,7 @@
 #include "libraries/pico_graphics/pico_graphics.hpp"
 
 namespace display {
-    const int WIDTH = 64; // set to 64 for full row/bar 24 for 3x3
+    const int WIDTH = 64; 
     const int HEIGHT = 64;
     const int BUFFER_SIZE = WIDTH * HEIGHT * 4;
 

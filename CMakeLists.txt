@@ -16,13 +16,13 @@ set(PICO_BOARD pico2_w CACHE STRING "Board type")
 
 cmake_minimum_required(VERSION 3.12)
 
-# set display to gigantic
+# set display to gigantic, interstate75, or other supported display
 
-set(MULTIVERSE_BOARD gigantic)
+set(MULTIVERSE_BOARD interstate75)
 
 if(NOT DEFINED MULTIVERSE_BOARD)
-set(MULTIVERSE_BOARD galactic)
-message(WARNING "No \"MULTIVERSE_BOARD\" specified. Defaulting to \"galactic\"")
+set(MULTIVERSE_BOARD interstate75)
+message(WARNING "No \"MULTIVERSE_BOARD\" specified. Defaulting to \"interstate75\"")
 else()
 message("\"MULTIVERSE_BOARD\" is set to \"${MULTIVERSE_BOARD}\".")
 endif()
@@ -42,7 +42,7 @@ set(CMAKE_CXX_STANDARD 17)
 pico_sdk_init()
 
 # Tiny USB
-set(FAMILY rp2040)
+set(FAMILY rp2350)
 set(BOARD pico_sdk)
 
 set(SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/src)
@@ -71,14 +71,15 @@ include(${DISPLAY_PATH})
 message("NAME set to \"${NAME}\"")
 target_link_libraries(${NAME}
     display
-    plasma
+    #plasma
     pico_stdlib
     pico_unique_id
     hardware_pio
-    hardware_watchdog
-
+    hardware_watchdog 
+    
     tinyusb_device
     tinyusb_board
+    hub75
 )
 
 # create map/bin/hex file etc.
